@@ -1,0 +1,23 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kirish</title>
+    <link rel="stylesheet" href="{% static 'css/auth_css.css' %}"></link>
+</head>
+<body class="login-body" style="background-image:url({% static 'img/background.jpg' %})">
+<form method="post">
+    {% csrf_token %}
+    <div class="login-div" style="background-image: url({% static 'img/squared_nb.jpg' %})">
+        <h1>Kirish</h1>
+        <input class="login-field" type="text" name="username" placeholder="Username">
+        <input class="login-field" type="password" name="password" placeholder="Parol">
+        <p style="color: red;">{{message}}</p>
+        <button class="login-btn" type="submit">Kirish</button>
+        <a href="{% url 'auth:register' %}">Akauntingiz yo'qmi ?</a>
+    </div>
+</form>
+    
+</body>
+</html>

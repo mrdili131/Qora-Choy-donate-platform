@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qora Choy</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <div class="main">
+        <div class="authors-div">
+            {% for user in users %}
+            <div class="author-item">
+                <img src="{% static 'img/tea.png' %}" alt="{{user.username}} logo" height="60px">
+                <a href="{% url 'donate' user.username %}" class="author-item-inside">Foidalanuvchi: <strong>{{user.username}}</strong></a>
+                <a href="{% url 'donate' user.username %}" class="author-item-inside" style="background-color: rgb(129, 80, 5); color: white; padding: 5px; border-radius: 5px;">Choy olib berish</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
+
+<style>
+.authors-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.author-item{
+    background-color: white;
+    padding: 20px;
+    border-radius: 6px;
+    width: 45vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 7vw;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.author-item-inside{
+    color: black;
+}
+
+</style>

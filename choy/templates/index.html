@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qora Choy</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <div class="main">
+        <div class="content">
+            <label>Qora Choy - Donat</label>
+            <img src="{% static 'img/tea.png' %}" alt="tea" height="300px">
+            <h1>Sizni ham qo'llab quvvatlashlarini hohlaysizmi ?</h1>
+            <h1>Unda bizga qo'shiling</h1>
+            <a href="{% url 'auth:register' %}" class="btn">Ulanish</a>
+        </div>
+    </div>
+</body>
+</html>

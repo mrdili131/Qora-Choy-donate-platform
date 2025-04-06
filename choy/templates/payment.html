@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qora Choy</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <form method="post">
+        {% csrf_token %}
+    <div class="main">
+        <h1 class="label">Kartani kiriting</h1>
+        <div class="card">
+            <div class="data">
+                <code class="card-details-num">8600 0000 0000 1234</code>
+                <div><code id="monthText">00</code>/<code id="yearText">00</code></div>
+                
+                <code>D*********d A*********v</code>
+                <div class="hand-data">
+                    <input placeholder="Kartani kiriting" class="credit-card" maxlength="19" id="digitInput" minlength="19" name="card">
+                    <input placeholder="00" class="valid" maxlength="2" max="12" min="01" id="month" minlength="2" name="month">/
+                    <input placeholder="00" class="valid" maxlength="2" max="40" min="25" id="year" minlength="2" name="year">
+                </div>
+                {% if message %}
+                <code style="color: red; font-weight: bold;">{{message}}</code>
+                {% endif %}
+            </div>
+        </div>
+        <div>
+            <p style="margin-top: 20px;">Sizdan 10 ta <strong>qora choy</strong> uchun <strong>10.000</strong> so'm yechib olinadi</p>
+            <button class="btn" style="margin-top: 10px;" type="submit">Davom etish</button>
+        </div>
+    </div>
+    </form>
+</body>
+</html>
+
+<script>
+    const cardN = document.getElementById('digitInput');
+    const month = document.getElementById('month');
+    const year = document.getElementById('year');
+    const cardnum = document.getElementsByClassName("card-details-num")[0]
+  
+    cardN.addEventListener('input', (e) => {
+      // Remove all non-digit characters
+      let value = e.target.value.replace(/\D/g, '');
+  
+      // Add a space every 4 digits
+      value = value.match(/.{1,4}/g)?.join(' ') || '';
+  
+      // Set the formatted value back to the cardN
+      e.target.value = value;
+      cardnum.textContent = value;
+    });
+    month.addEventListener('input', (e) => {
+        document.getElementById("monthText").textContent = month.value;
+    });
+    year.addEventListener('input', (e) => {
+        document.getElementById("yearText").textContent = year.value;
+    });
+  </script>

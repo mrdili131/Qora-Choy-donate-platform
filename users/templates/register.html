@@ -1,0 +1,31 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registratsiya</title>
+    <link rel="stylesheet" href="{% static 'css/auth_css.css' %}"></link>
+</head>
+<body class="login-body" style="background-image:url({% static 'img/background.jpg' %})">
+<form method="post">
+    {% csrf_token %}
+    <div class="login-div" style="background-image: url({% static 'img/squared_nb.jpg' %})">
+        <h1>Registratsiya</h1>
+        <input class="login-field" type="text" name="username" placeholder="Username">
+        <input class="login-field" type="text" name="first_name" placeholder="Ism">
+        <input class="login-field" type="text" name="last_name" placeholder="Familiya">
+        <input class="login-field" type="email" name="email" placeholder="Elektron pochta">
+        <input class="login-field" type="text" name="number" placeholder="Tel raqam">
+        <input class="login-field" type="password" name="password" placeholder="Parol">
+        <input class="login-field" type="password" name="password1" placeholder="Parolni tastiqlash">
+        {% if message %}
+        <p style="color: red;">{{message}}</p>
+        {% endif %}
+        <div class="agreed"><p>Roziman</p><input type="checkbox" name="checkmark"></div>
+        <button class="login-btn" type="submit">Kirish</button>
+        <a href="{% url 'auth:login' %}">Akauntingiz bormi ?</a>
+    </div>
+</form>
+    
+</body>
+</html>

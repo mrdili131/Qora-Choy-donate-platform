@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qora Choy</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <div class="main">
+        <form method="post">
+        <div class="content">
+            {% csrf_token %}
+            <img src="{% static 'img/tea.png' %}" alt="author" height="150px">
+            <h2 class="infoText"><strong>{{author.username}}</strong>ga <strong id="amountText">1</strong> ta <strong>qora choy</strong> sovg'a qilish</h2>
+            <div style="display: flex;flex-direction: column;justify-content: center;align-items: center;font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+                <p>Ismingizni kiriting</p>
+                <input style="margin-top: 10px;" id="name" placeholder="Palonchijon" type="text" name="name">
+            </div>
+            <input id="amount" class="center" placeholder="Choy soni" maxlength="4" min="1" type="number" name="amount">
+            <button class="btn">Davom etish</button>
+        </div>
+    </form>
+    </div>
+</body>
+</html>
+
+<script>
+    const amount = document.getElementById("amount");
+    amount.addEventListener('input', (e) => {
+        document.getElementById("amountText").textContent = amount.value;
+    });
+</script>
